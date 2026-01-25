@@ -10,10 +10,15 @@ on:
     workflows: [Pipeline]
     branches: [dev]
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Pipeline run ID to download artifact from
+        required: true
 
 jobs:
   dev-deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Install pnpm
@@ -25,14 +30,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
           name: web-dist
           path: dist
-          run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.run_id }}
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
