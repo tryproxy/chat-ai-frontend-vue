@@ -1,4 +1,4 @@
-name: Vercel
+name: Preview
 permissions:
   actions: read
   contents: read
