@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 .DS_Store
 dist
+dist-dev
+dist-prod
 dist-ssr
 coverage
 *.local
@@ -34,3 +36,15 @@ coverage
 
 # Vitest
 __screenshots__/
+.vercel
+
+# Temporary scripts and setup files
+*.sh
+setup-*.md
+spec-*.md
+dns-*.md
+
+# Environments
+.env
+.env.local
+.env.*.local
