@@ -107,5 +107,11 @@ jobs:
       - name: Build
         run: pnpm build-only
 
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: dist
+
       - name: Done
         run: echo "Building completed on ${{ github.ref }} with ${{ job.status }}."
