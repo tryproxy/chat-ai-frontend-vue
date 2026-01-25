@@ -1,4 +1,4 @@
-name: Preview
+name: Production
 permissions:
   actions: read
   contents: read
