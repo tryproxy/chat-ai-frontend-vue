@@ -34,3 +34,10 @@ coverage
 
 # Vitest
 __screenshots__/
+.vercel
+
+# Temporary scripts and setup files
+*.sh
+setup-*.md
+spec-*.md
+dns-*.md
