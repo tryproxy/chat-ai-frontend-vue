@@ -1,4 +1,4 @@
-name: Preview
+name: Vercel
 permissions:
   actions: read
   contents: read
@@ -37,6 +37,8 @@ jobs:
           name: web-dist
           path: dist
           run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
