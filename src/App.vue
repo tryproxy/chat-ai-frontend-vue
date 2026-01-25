@@ -1,7 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const appMode = import.meta.env.MODE
+const appEnv = import.meta.env.VITE_ENVIRONMENT
+</script>
 
 <template>
   <h1>You did it!</h1>
+  <p>
+    Mode: <strong>{{ appMode }}</strong>
+    <span v-if="appEnv">
+      · Environment: <strong>{{ appEnv }}</strong></span
+    >
+  </p>
   <p>
     Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
     documentation
