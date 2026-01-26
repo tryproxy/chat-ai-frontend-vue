@@ -1,4 +1,4 @@
-name: Production
+name: Production Deploy
 permissions:
   actions: read
   contents: read
@@ -18,7 +18,7 @@ on:
 
 jobs:
   prod-deploy:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push') }}
     runs-on: ubuntu-latest
     steps:
       - name: Install pnpm
