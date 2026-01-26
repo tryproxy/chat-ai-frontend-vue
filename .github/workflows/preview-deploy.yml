@@ -1,0 +1,86 @@
+name: Preview Deploy
+permissions:
+  actions: read
+  contents: read
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  workflow_run:
+    workflows: [Pipeline]
+    branches: [dev]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Pipeline run ID to download artifact from
+        required: false
+        default: ''
+
+      ref:
+        description: Branch/tag/SHA to build
+        required: false
+        default: dev
+
+jobs:
+  dev-deploy:
+    if: |
+      ${{
+        (github.event_name == 'workflow_dispatch' && inputs.run_id != '')
+        || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-dist-dev
+          path: dist
+          run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
+
+  deploy-on-demand:
+    if: |
+      ${{
+        github.event_name == 'workflow_dispatch' && (inputs.run_id == '' || inputs.run_id == null)
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build:dev
+
+      - name: Deploy Project Artifacts to Vercel
+        run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
