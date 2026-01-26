@@ -7,7 +7,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   workflow_run:
-    workflows: [Pipeline]
+    workflows: [CI]
     branches: [main]
     types: [completed]
   workflow_dispatch:
