@@ -80,10 +80,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build:dev
+        run: pnpm dlx vercel@latest build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Verify dist output
-        run: ls -la dist
+      - name: Verify Vercel build output
+        run: ls -la .vercel/output
 
       - name: Deploy Project Artifacts to Vercel
-        run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm dlx vercel@latest deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
