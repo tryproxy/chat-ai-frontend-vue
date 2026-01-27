@@ -10,11 +10,13 @@ const router = createRouter({
       path: ROUTES.PAGES.HOME.path,
       name: ROUTES.PAGES.HOME.name,
       component: Home,
+      meta: { transition: 'fade' },
     },
     {
       path: ROUTES.PAGES.LOGIN.path,
       name: ROUTES.PAGES.LOGIN.name,
       component: Login,
+      meta: { transition: 'slide' },
     },
   ],
 })

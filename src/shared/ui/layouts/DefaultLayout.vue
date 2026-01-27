@@ -6,9 +6,7 @@ import { Header } from '@/widgets/header'
 <template>
   <div class="layout">
     <Header />
-    <main>
-      <slot />
-    </main>
+    <main><slot /></main>
     <Footer />
   </div>
 </template>
