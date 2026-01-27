@@ -92,6 +92,8 @@ jobs:
         run: pnpm dlx vercel@latest pull --yes --environment=${{ inputs.stage }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build
+        env:
+          VITE_ENVIRONMENT: ${{ inputs.stage }}
         run: |
           if [ "${{ inputs.stage }}" = "production" ]; then
             pnpm dlx vercel@latest build --prod --token=${{ secrets.VERCEL_TOKEN }}
