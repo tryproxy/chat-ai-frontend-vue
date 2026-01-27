@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const appMode = import.meta.env.MODE
-const appEnv = import.meta.env.VERCEL_ENV ?? import.meta.env.VITE_ENVIRONMENT ?? 'local'
+const appEnv = import.meta.env.MODE
+const appMode = import.meta.env.VITE_ENVIRONMENT ?? 'local'
 </script>
 <template>
   <footer>
     <p>
-      Mode: <strong>{{ appMode }}</strong>
+      stage: <strong>{{ appMode }}</strong>
       <span v-if="appEnv">
         · Environment: <strong>{{ appEnv }}</strong></span
       >
