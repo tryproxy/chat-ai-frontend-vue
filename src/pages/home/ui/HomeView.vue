@@ -1,18 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="home">
-    <span>home</span>
+  <div :class="['flex items-center justify-center gap-2', 'text-2xl text-foreground']">
+    <span class="text-4xl">home</span>
+    <div class="h-10 w-10 rounded-full bg-primary">...</div>
+    <div class="h-10 w-10 rounded-full bg-primary">...</div>
   </div>
 </template>
 
-<style scoped>
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  font-size: 2rem;
-  color: #333;
-}
-</style>
+<style scoped></style>
