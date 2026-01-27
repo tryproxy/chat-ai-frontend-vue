@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const appMode = import.meta.env.MODE
-const appEnv = import.meta.env.VITE_ENVIRONMENT
+const appEnv = import.meta.env.VERCEL_ENV ?? import.meta.env.VITE_ENVIRONMENT ?? 'local'
 </script>
 <template>
   <footer>
@@ -10,9 +10,6 @@ const appEnv = import.meta.env.VITE_ENVIRONMENT
         · Environment: <strong>{{ appEnv }}</strong></span
       >
     </p>
-    <p>
-      Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-      documentation
-    </p>
+    <p>gh:<a href="https://github.com/tryproxy" target="_blank" rel="noopener">tryproxy</a></p>
   </footer>
 </template>
