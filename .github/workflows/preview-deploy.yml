@@ -82,5 +82,8 @@ jobs:
       - name: Build
         run: pnpm build:dev
 
+      - name: Verify dist output
+        run: ls -la dist
+
       - name: Deploy Project Artifacts to Vercel
-        run: pnpm dlx vercel@latest deploy ./dist --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm dlx vercel@latest deploy ./dist --token=${{ secrets.VERCEL_TOKEN }}
