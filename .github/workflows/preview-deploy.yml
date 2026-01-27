@@ -18,9 +18,18 @@ on:
         default: ''
 
       ref:
-        description: Branch/tag/SHA to build
+        description: Branch/tag/SHA to build from
         required: false
         default: dev
+
+      stage:
+        description: Environment to deploy to
+        required: false
+        default: preview
+        type: choice
+        options:
+          - preview
+          - production
 
 jobs:
   dev-deploy:
@@ -80,7 +89,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Vercel pull (project settings)
-        run: pnpm dlx vercel@latest pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm dlx vercel@latest pull --yes --environment=${{ inputs.stage }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build
         run: pnpm dlx vercel@latest build --token=${{ secrets.VERCEL_TOKEN }}
@@ -89,4 +98,9 @@ jobs:
         run: ls -la .vercel/output
 
       - name: Deploy Project Artifacts to Vercel
-        run: pnpm dlx vercel@latest deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ "${{ inputs.stage }}" = "production" ]; then
+            pnpm dlx vercel@latest deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            pnpm dlx vercel@latest deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+          fi
