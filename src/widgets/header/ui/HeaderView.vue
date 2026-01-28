@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ROUTES } from '@/shared/config/router'
-import NavLink from '@/shared/ui/kit/NavLink.vue'
+import { ROUTES } from '@/shared/config/router';
+import NavLink from '@/shared/ui/kit/NavLink.vue';
 </script>
 
 <template>
