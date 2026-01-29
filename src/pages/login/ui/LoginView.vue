@@ -1,10 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LoginForm from './LoginForm.vue';
+
+</script>
+
 
 <template>
-  <div :class="['flex items-center justify-center gap-2', 'text-2xl text-foreground']">
-    <span class="text-4xl">login</span>
+  <div class="
+    flex min-h-screen flex-col items-center justify-center text-2xl
+    text-foreground
+  ">
+    <div class="
+      flex items-center justify-center rounded-sm border border-surface-border
+      bg-surface p-4
+    ">
+      <LoginForm class="" />
+    </div>
   </div>
 </template>
+
 
 <style scoped>
 .login {
