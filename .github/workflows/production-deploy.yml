@@ -20,6 +20,8 @@ jobs:
   prod-deploy:
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push') }}
     runs-on: ubuntu-latest
+    env:
+      VITE_BACKEND_BASE_URL: ${{ secrets.VITE_BACKEND_BASE_URL }}
     steps:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
