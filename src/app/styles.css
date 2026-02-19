@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #0b1120;
+
+  --color-foreground: #f8fafc;
+  --color-foreground-secondary: #94a3b8;
+
+  --color-surface: #111827;
+  --color-surface-border: #1f2937;
+
+  --color-link: #e2e8f0;
+
+  --color-primary: #f8fafc;
+  --color-secondary: #94a3b8;
+  --color-info: #94a3b8;
+  --color-warning: #64748b;
+  --color-danger: #94a3b8;
+  --text-base: 0.875rem;
+  --text-heading: 1.25rem;
+  --text-title: 1.5rem;
+
+  --size-0: 0;
+  --size-2xs: 0.25rem;
+  --size-xs: 0.5rem;
+  --size-sm: 0.75rem;
+  --size-md: 1rem;
+  --size-lg: 1.5rem;
+  --size-xl: 2rem;
+  --size-2xl: 3rem;
+  --size-3xl: 4rem;
+
+  --margin-0: var(--size-0);
+  --margin-2xs: var(--size-2xs);
+  --margin-xs: var(--size-xs);
+  --margin-sm: var(--size-sm);
+  --margin-md: var(--size-md);
+  --margin-lg: var(--size-lg);
+  --margin-xl: var(--size-xl);
+  --margin-2xl: var(--size-2xl);
+  --margin-3xl: var(--size-3xl);
+
+  --padding-0: var(--size-0);
+  --padding-2xs: var(--size-2xs);
+  --padding-xs: var(--size-xs);
+  --padding-sm: var(--size-sm);
+  --padding-md: var(--size-md);
+  --padding-lg: var(--size-lg);
+  --padding-xl: var(--size-xl);
+  --padding-2xl: var(--size-2xl);
+  --padding-3xl: var(--size-3xl);
+
+  --gap-0: var(--size-0);
+  --gap-2xs: var(--size-2xs);
+  --gap-xs: var(--size-xs);
+  --gap-sm: var(--size-sm);
+  --gap-md: var(--size-md);
+  --gap-lg: var(--size-lg);
+  --gap-xl: var(--size-xl);
+  --gap-2xl: var(--size-2xl);
+  --gap-3xl: var(--size-3xl);
+}
+
+.theme-light {
+  --color-background: #f8fafc;
+
+  --color-foreground: #0f172a;
+  --color-foreground-secondary: #475569;
+
+  --color-surface: #ffffff;
+  --color-surface-border: #e2e8f0;
+
+  --color-link: #1e293b;
+
+  --color-primary: #0f172a;
+  --color-secondary: #475569;
+  --color-info: #475569;
+  --color-warning: #64748b;
+  --color-danger: #475569;
+}
+
+.theme-dark {
+  --color-background: #0b1120;
+
+  --color-foreground: #f8fafc;
+  --color-foreground-secondary: #94a3b8;
+
+  --color-surface: #111827;
+  --color-surface-border: #1f2937;
+
+  --color-link: #e2e8f0;
+
+  --color-primary: #f8fafc;
+  --color-secondary: #94a3b8;
+  --color-info: #94a3b8;
+  --color-warning: #64748b;
+  --color-danger: #94a3b8;
+}
