@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: ROUTES.PAGES.CHECKOUT.path,
       name: ROUTES.PAGES.CHECKOUT.name,
-      component: () => CheckoutForward,
+      component: CheckoutForward,
       meta: { transition: 'page' },
     },
   ],

@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 onMounted(() => {
-  const backendBase = 'https://BACKEND-DOMAIN.COM'
+  const backendBase = import.meta.env.VITE_BACKEND_BASE_URL || 'https://hono-prisma-vue-grammy.onrender.com/'
   const marketplace = String(route.params.marketplace || 'digiseller');
   const url = new URL(`/checkout/${marketplace}`, backendBase)
 
