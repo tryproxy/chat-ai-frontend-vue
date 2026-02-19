@@ -8,5 +8,9 @@ export const ROUTES = {
       path: '/login',
       name: 'login',
     },
+    CHECKOUT: {
+      path: '/checkout/:marketplace',
+      name: 'checkout-forward',
+    },
   },
 }

@@ -1,3 +1,4 @@
+import { CheckoutForward } from '@/pages/checkout'
 import { Home } from '@/pages/home'
 import { Login } from '@/pages/login'
 import { ROUTES } from '@/shared/config/router'
@@ -17,6 +18,12 @@ const router = createRouter({
       name: ROUTES.PAGES.LOGIN.name,
       component: Login,
       meta: { transition: 'slide' },
+    },
+    {
+      path: ROUTES.PAGES.CHECKOUT.path,
+      name: ROUTES.PAGES.CHECKOUT.name,
+      component: () => CheckoutForward,
+      meta: { transition: 'page' },
     },
   ],
 })
